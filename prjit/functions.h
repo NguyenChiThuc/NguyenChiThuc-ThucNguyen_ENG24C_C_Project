@@ -13,7 +13,6 @@ void deleteStudent(int *length, struct Student sv[]);
 void editStudent(int length, struct Student sv[]);
 void searchStudent(int length, struct Student sv[]);
 void sortStudentsByName(int length, struct Student sv[]);
-
 //menu hien thi ra danh sach tuy chinh giao vien
 void menuTeacher();
 void printTeacher(int length, struct Teacher tv[]);

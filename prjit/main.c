@@ -3,31 +3,34 @@
 #include "datatype.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char *argv[]) {
-    int choice, choice1, choice3, choice7, choice5, choice9, choice4;
+    int choice, choiceMenuStudent, choiceMenuTeacher, choiceMenuAdmin;
     int studentCount = 0;
     int length = 0;
     int teacherCount= 0;
     struct Student students[50];
     struct Teacher teachers[50];
+
+    loadStudentsFromFile(&studentCount, students);
+    loadTeachersFromFile(&teacherCount, teachers);
     do {
         menuStart();
-        printf("\tEnter your selection: ");
+        printf("\tEnter your choose: ");
         scanf("%d", &choice);
         switch(choice){
             case 1:
             	system("cls");
                 do{
                     menuAdmin();
-                    printf("\tEnter your selection: ");
-                    scanf("%d", &choice1); 
-                    switch(choice1){
+                    printf("\tEnter your choose: ");
+                    scanf("%d", &choiceMenuAdmin); 
+                    switch(choiceMenuAdmin){
                         case 1:
                         	system("cls");
                             do {
                                 menuStudents();
                                 printf("\tEnter your selection: ");
-                                scanf("%d", &choice3);
-                                switch(choice3){
+                                scanf("%d", &choiceMenuStudent);
+                                switch(choiceMenuStudent){
                                     case 1:
                                     	system("cls");
                                         addStudent(&studentCount, students);
@@ -67,7 +70,7 @@ int main(int argc, char *argv[]) {
                                     default:
                                         printf("\tLoi: Please enter again.\n");
                                 }
-                            }while(choice3!=0);
+                            }while(choiceMenuStudent!=0);
                             break;
                         case 2: 
                         	break;
@@ -76,8 +79,8 @@ int main(int argc, char *argv[]) {
                         	do{
                         		menuTeacher();
                         		printf("\tEnter your selection: ");
-                                scanf("%d", &choice5);
-                                switch(choice5){
+                                scanf("%d", &choiceMenuTeacher);
+                                switch(choiceMenuTeacher){
                                 	case 1:
                                 		system("cls");
                                 		addTeacher(&teacherCount, teachers);
@@ -121,7 +124,7 @@ int main(int argc, char *argv[]) {
                                 	default:
                                 		printf("\tLoi:Please enter again.\n");	
                                 }
-							}while(choice5!=0);
+							}while(choiceMenuTeacher!=0);
                         	break; 
                         case 4:
                         	system("cls");
@@ -134,7 +137,7 @@ int main(int argc, char *argv[]) {
                         default:
                             printf("\tLoi: Please enter again.\n");
                     }
-                }while(choice1!=0);
+                }while(choiceMenuAdmin!=0);
                 break;
             case 2:
             	system("cls");
