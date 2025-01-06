@@ -41,27 +41,28 @@ void menuStudents(){
     printf("\t======================\n");
 }
 void addStudent(int *length, struct Student sv[]){
-	int isValidId(char* studentId[]){
-    //9 ki tu chi sô 
-    if (strlen(studentId) > 9) return 0;
+	int isValidId(char* studentId){
+    //9 ki tu chi sô hoac chu 
+    if (strlen(studentId) != 3) return 0;
     int i;
-    for (i =0; studentId[i] != '\0'; i++){
-        if(studentId[i]<'0' || studentId[i]>'9') return 0;
-		}
-		return 1;		
-	}
+    for (i = 0; studentId[i] != '\0'; i++){
+        if (!isalnum(studentId[i])) return 0;
+    }
+    return 1;
+}
  // Kiem tra xem id co ton tai hay khong
-	int isIdExist(struct Student sv[], int length,  char* studentId[]){
+int isIdExist(struct Student sv[], int length, const char* studentId){
+    
     if (studentId == NULL || strlen(studentId) == 0){
         return 0;
     }
 	int i;
     for (i = 0; i < length; i++){
         if (strcmp(sv[i].studentId, studentId) == 0){
-            return 0;
+            return 1;
         }
     }
-    return 1; 
+    return 0; 
 } 
     // Kiem tra ten hop le
     int isValidName(char* fullName){
@@ -937,7 +938,7 @@ void sortTeachersByName(int length, struct Teacher tv[]){
 	    }
 	}while(choicesortTeachersByName!=0);
 } 
-void backandexit() {
+void backandexit(){
 	int choice1;
     do {
         printf("Go back(b)? or Exit(0)? : ");
