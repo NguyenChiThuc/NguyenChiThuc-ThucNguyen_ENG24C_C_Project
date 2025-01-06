@@ -42,8 +42,8 @@ void menuStudents(){
 }
 void addStudent(int *length, struct Student sv[]){
 	int isValidId(char* studentId){
-    //9 ki tu chi sô hoac chu 
-    if (strlen(studentId) != 3) return 0;
+    //9 ki tu chi sÃ´ hoac chu 
+    if (strlen(studentId) != 9) return 0;
     int i;
     for (i = 0; studentId[i] != '\0'; i++){
         if (!isalnum(studentId[i])) return 0;
